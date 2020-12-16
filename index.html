@@ -1,6 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script> 
+
+<script type="text/javascript"> 
+	function sendEmail(fname, lname, Mail, Subject, Body) { 
+	Email.send({ 
+		Host: "smtp.elasticemail.com", 
+		Username: "pradeep.elfin.001@gmail.com", 
+		Password: "89E5ABF9B4E5D06DA65182E371E634F54BED",
+    Port: 2525,
+    EnableSsl: true,
+    UseDefaultCredentials: false,
+		To: 'pradeep.elfin.001@gmail.com', 
+		From: 'pradeep.elfin.001@gmail.com', 
+		Subject, 
+		Body: `Name:-${fname} ${lname}, Email:-${Mail} ${Body}`, 
+	}) 
+		.then(function (message) { 
+      console.log(message);
+		alert("mail sent successfully") 
+		}); 
+	} 
+</script> 
+
     <title>Create &mdash; Onepage Website Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -468,7 +493,7 @@
 
             
 
-            <form action="#" class="p-5 bg-white">
+            <form class="p-5 bg-white">
               
               <h2 class="h4 text-black mb-5">Contact Form</h2> 
 
@@ -508,7 +533,7 @@
 
               <div class="row form-group">
                 <div class="col-md-12">
-                  <input type="submit" value="Send Message" class="btn btn-primary btn-md text-white">
+                  <input type="button" onclick="sendEmail(fname.value, lname.value, email.value, subject.value, message.value)" value="Send Message" class="btn btn-primary btn-md text-white">
                 </div>
               </div>
 
@@ -572,9 +597,9 @@
             <h2 class="footer-heading mb-4">Subscribe Newsletter</h2>
             <form action="#" method="post">
               <div class="input-group mb-3">
-                <input type="text" class="form-control border-secondary text-white bg-transparent" placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2">
+                <input type="text" id="subnews" class="form-control border-secondary text-white bg-transparent" placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2">
                 <div class="input-group-append">
-                  <button class="btn btn-primary text-white" type="button" id="button-addon2">Send</button>
+                  <button onclick="sendEmail('a', 'a', subnews.value, 'a', 'a')" class="btn btn-primary text-white" type="button" id="button-addon2">Send</button>
                 </div>
               </div>
             </form>
